@@ -1,9 +1,8 @@
 #include<iostream>
-#include "RoundRobin.h"
-#include "RoundRobin.h"
+#include "RoundRobin.hpp"
 
 int main()
 {
-    init();
+    RoundRobinInit();
     return 0;
 }
