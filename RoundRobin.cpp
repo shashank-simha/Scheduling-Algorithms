@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void FindWaitingTime(int processes[], int n, int bt[], int wt[], int quantum) 
+void RRFindWaitingTime(int processes[], int n, int bt[], int wt[], int quantum) 
 { 
 	// Make a copy of burst times bt[] to store remaining 
 	// burst times. 
@@ -64,7 +64,7 @@ void FindWaitingTime(int processes[], int n, int bt[], int wt[], int quantum)
 	} 
 } 
 
-void FindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]) 
+void RRFindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]) 
 { 
 	// calculating turnaround time by adding 
 	// bt[i] + wt[i] 
@@ -72,15 +72,15 @@ void FindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[])
 		tat[i] = bt[i] + wt[i]; 
 } 
 
-void FindAvgTime(int processes[], int n, int bt[], int quantum) 
+void RRFindAvgTime(int processes[], int n, int bt[], int quantum) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0; 
 
 	// Function to find waiting time of all processes 
-	FindWaitingTime(processes, n, bt, wt, quantum); 
+	RRFindWaitingTime(processes, n, bt, wt, quantum); 
 
 	// Function to find turn around time for all processes 
-	FindTurnAroundTime(processes, n, bt, wt, tat); 
+	RRFindTurnAroundTime(processes, n, bt, wt, tat); 
 
 	// Display processes along with all details 
 	cout << "Processes "<< " Burst time " << " Waiting time " << " Turn around time" << endl; 
@@ -102,8 +102,11 @@ void RoundRobinInit(int processes[], int no_processes, int burst_time[])
 { 
 	// Time quantum 
 	int quantum;
+	cout << "__________________________________________________" << endl << endl;
+	cout << "\t\t Round Robin" << endl;
+	cout << "__________________________________________________" << endl;
     cout << "Enter the time quantum: ";
     cin >> quantum;
 
-	FindAvgTime(processes, no_processes, burst_time, quantum); 
+	RRFindAvgTime(processes, no_processes, burst_time, quantum); 
 } 
