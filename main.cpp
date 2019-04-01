@@ -1,6 +1,7 @@
 #include<iostream>
 #include "RoundRobin.hpp"
 #include "FCFS.hpp"
+#include "SJN.hpp"
 
 using namespace std;
 
@@ -12,8 +13,8 @@ int main()
     cout << "Enter the number of processes: ";
     cin >> no_processes;
 
-	processes = (int*) malloc(no_processes*sizeof(int));
-    burst_time = (int*) malloc(no_processes*sizeof(int));
+	processes = (int*) new int[no_processes];
+    burst_time = (int*) (int*) new int[no_processes];
 
 	if(!(processes || burst_time))
 	{
@@ -34,5 +35,7 @@ int main()
 
     RoundRobinInit(processes, no_processes, burst_time);
     FCFS temp(processes, no_processes, burst_time);
+    SJNInit(processes, no_processes, burst_time);
+
     return 0;
 }
