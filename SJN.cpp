@@ -23,7 +23,7 @@ void SJNFindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]
 }
 
 //Function to calculate average time
-void SJNFindAvgTime(int processes[], int n, int bt[])
+void SJNFindAvgTime(int processes[], int n, int bt[], float *avgWt, float *avgTat)
 {
     int wt[n], tat[n], total_wt = 0, total_tat = 0;
 
@@ -44,6 +44,9 @@ void SJNFindAvgTime(int processes[], int n, int bt[])
         total_tat = total_tat + tat[i];
         cout << " " << processes[i] << "\t\t" << bt[i] << "\t " << wt[i] << "\t\t " << tat[i] << endl;
     }
+
+	*avgWt = (float)total_wt / (float)n;
+	*avgTat = (float)total_tat / (float)n;
 
     cout << "Average waiting time = " << (float)total_wt / (float)n << endl;
     cout << "Average turn around time = " << (float)total_tat / (float)n << endl;
@@ -77,7 +80,7 @@ void SJNSort(int processes[], int n, int bt[])
     }
 }
 
-void SJNInit(int processes[], int no_processes, int burst_time[])
+void SJNInit(int processes[], int no_processes, int burst_time[], float *avgWt, float *avgTat)
 {
     // Sorting processes by burst time.
     SJNSort(processes, no_processes, burst_time);
@@ -90,5 +93,5 @@ void SJNInit(int processes[], int no_processes, int burst_time[])
         cout << processes[i] << " ";
         cout << endl;
 
-    SJNFindAvgTime(processes, no_processes,burst_time);
+    SJNFindAvgTime(processes, no_processes,burst_time, avgWt, avgTat);
 }

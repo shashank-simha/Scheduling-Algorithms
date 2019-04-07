@@ -21,7 +21,7 @@ void PS::FindTurnAroundTime( int processes[], int n, int bt[], int wt[], int tat
 		tat[i] = bt[i] + wt[i]; 
 } 
 
-void PS::FindAvgTime( int processes[], int n, int bt[], int priority[]) 
+void PS::FindAvgTime( int processes[], int n, int bt[], int priority[], float *avgWt, float *avgTat) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0; 
 
@@ -79,14 +79,14 @@ void PS::PrioriySort(int processes[], int n, int bt[], int priority[])
     }
 }
 
-PS::PS(int processes[], int no_processes, int burst_time[], int priority[]) 
+PS::PS(int processes[], int no_processes, int burst_time[], int priority[], float *avgWt, float *avgTat) 
 { 
 	cout << "__________________________________________________" << endl << endl;
 	cout << "\t\t Priority Scheduling" << endl;
 	cout << "__________________________________________________" << endl;
 
     PS::PrioriySort(processes, no_processes, burst_time, priority);
-	PS::FindAvgTime(processes, no_processes, burst_time, priority); 
+	PS::FindAvgTime(processes, no_processes, burst_time, priority, avgWt, avgTat); 
 }
 
 PS::~PS()

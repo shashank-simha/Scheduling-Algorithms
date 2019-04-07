@@ -8,12 +8,12 @@ private:
 
     void FindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]);
 
-    void FindAvgTime(int processes[], int n, int bt[], int priority[]);
+    void FindAvgTime(int processes[], int n, int bt[], int priority[], float *avgWt, float *avgTat);
 
     void PrioriySort(int processes[], int n, int bt[], int priority[]);
 
 public:
-    PS(int processes[], int no_processes, int burst_time[], int priority[]);
+    PS(int processes[], int no_processes, int burst_time[], int priority[], float *avgWt, float *avgTat);
 
     ~PS();
 };

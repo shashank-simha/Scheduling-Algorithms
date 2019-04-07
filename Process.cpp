@@ -67,3 +67,48 @@ void Process::toArray(int process[], int bt[], int pri[])
         trav = trav -> next;
     }
 }
+
+void Process::setAverage(float wt, float tat, string algo)
+{
+    if(algo == "RR")
+    {
+        average -> avgWtRR = wt;
+        average -> avgTatRR = tat;
+    }
+
+    else if (algo == "FCFN") 
+    {
+        average -> avgWtFCFN = wt;
+        average -> avgTatFCFN = tat;
+    }
+    
+
+    else if (algo == "Priority") 
+    {
+        average -> avgWtPri = wt;
+        average -> avgTatPri = tat;
+    }
+
+
+    else if (algo == "SJN") 
+    {
+        average -> avgWtSJN = wt;
+        average -> avgTatSJN = tat;
+    }
+
+    else
+    {
+        cout << "Invalid algorithm" << endl;
+    }
+    
+}
+
+void Process::getAverage()
+{
+    cout << "Algorithm" << "\t\t" << "Avg WT" << "\t\t" << "Avg TAT" << endl;
+
+    cout << "RR" << "\t\t\t" << average -> avgWtRR << "\t\t" << average -> avgTatRR << endl;
+    cout << "FCFN" << "\t\t\t" << average -> avgWtFCFN << "\t\t" << average -> avgTatFCFN << endl;
+    cout << "Priority" << "\t\t\t" << average -> avgWtPri << "\t\t" << average -> avgTatPri << endl;
+    cout << "SJN" << "\t\t\t" << average -> avgWtSJN << "\t\t" << average -> avgTatSJN << endl;
+}

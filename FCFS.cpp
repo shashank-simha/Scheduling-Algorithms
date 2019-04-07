@@ -21,7 +21,7 @@ void FCFS::FindTurnAroundTime( int processes[], int n, int bt[], int wt[], int t
 		tat[i] = bt[i] + wt[i]; 
 } 
 
-void FCFS::FindAvgTime( int processes[], int n, int bt[]) 
+void FCFS::FindAvgTime( int processes[], int n, int bt[], float *avgWt, float *avgTat) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0; 
 
@@ -43,16 +43,18 @@ void FCFS::FindAvgTime( int processes[], int n, int bt[])
 		cout << " " << i+1 << "\t\t" << bt[i] <<"\t " << wt[i] <<"\t\t " << tat[i] <<endl; 
 	} 
 
+	*avgWt = (float)total_wt / (float)n;
+	*avgTat = (float)total_tat / (float)n;
 	cout << "Average waiting time = " << (float)total_wt / (float)n << endl; 
 	cout << "Average turn around time = "	<< (float)total_tat / (float)n << endl; 
 } 
 
-FCFS::FCFS(int processes[], int no_processes, int burst_time[]) 
+FCFS::FCFS(int processes[], int no_processes, int burst_time[], float *avgWt, float *avgTat) 
 { 
 	cout << "__________________________________________________" << endl << endl;
 	cout << "\t\t First Come First Serve" << endl;
 	cout << "__________________________________________________" << endl;
-	FCFS::FindAvgTime(processes, no_processes, burst_time); 
+	FCFS::FindAvgTime(processes, no_processes, burst_time, avgWt, avgTat); 
 }
 
 FCFS::~FCFS()

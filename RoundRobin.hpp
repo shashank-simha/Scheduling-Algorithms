@@ -5,8 +5,8 @@ void RRFindWaitingTime(int processes[], int n, int bt[], int wt[], int quantum);
 
 void RRFindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[]);
 
-void RRFindAvgTime(int processes[], int n, int bt[], int quantum);
+void RRFindAvgTime(int processes[], int n, int bt[], int quantum, float *avgWt, float *avgTat);
 
-void RoundRobinInit(int processes[], int no_processes, int burst_time[], int quantum);
+void RoundRobinInit(int processes[], int no_processes, int burst_time[], int quantum, float *avgWt, float *avgTat);
 
 #endif

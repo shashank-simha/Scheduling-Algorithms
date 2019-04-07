@@ -72,7 +72,7 @@ void RRFindTurnAroundTime(int processes[], int n, int bt[], int wt[], int tat[])
 		tat[i] = bt[i] + wt[i]; 
 } 
 
-void RRFindAvgTime(int processes[], int n, int bt[], int quantum) 
+void RRFindAvgTime(int processes[], int n, int bt[], int quantum, float *avgWt, float *avgTat) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0; 
 
@@ -94,15 +94,17 @@ void RRFindAvgTime(int processes[], int n, int bt[], int quantum)
 		cout << " " << i+1 << "\t\t" << bt[i] <<"\t " << wt[i] <<"\t\t " << tat[i] <<endl; 
 	} 
 
+	*avgWt = (float)total_wt / (float)n;
+	*avgTat = (float)total_tat / (float)n;
 	cout << "Average waiting time = " << (float)total_wt / (float)n << endl; 
 	cout << "Average turn around time = " << (float)total_tat / (float)n << endl; 
 } 
 
-void RoundRobinInit(int processes[], int no_processes, int burst_time[], int quantum) 
+void RoundRobinInit(int processes[], int no_processes, int burst_time[], int quantum, float *avgWt, float *avgTat) 
 { 
 	cout << "__________________________________________________" << endl << endl;
 	cout << "\t\t Round Robin" << endl;
 	cout << "__________________________________________________" << endl;
 
-	RRFindAvgTime(processes, no_processes, burst_time, quantum); 
+	RRFindAvgTime(processes, no_processes, burst_time, quantum, avgWt, avgTat); 
 } 

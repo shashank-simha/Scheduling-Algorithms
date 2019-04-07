@@ -1,6 +1,9 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
+#include <iostream>
+using namespace std;
+
 class Process
 {
 private:
@@ -12,14 +15,16 @@ private:
         struct P * next;
     };
 
-    struct P *head, *current, *newprocess;
-
     struct avg
     {
         float avgWtRR, avgWtFCFN, avgWtPri, avgWtSJN;
         float avgTatRR, avgTatFCFN, avgTatPri, avgTatSJN;
     };
     
+    struct P *head, *current, *newprocess;
+    
+    struct avg *average;
+
 public:
     Process();
     ~Process();
@@ -27,6 +32,11 @@ public:
     void append(int pid, int bt, int pri);
 
     void toArray(int process[], int bt[], int pri[]);
+
+    void setAverage(float wt, float tat, string algo);
+
+    void getAverage();
+
 };
 
 #endif
