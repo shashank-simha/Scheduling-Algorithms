@@ -50,7 +50,7 @@ void FCFS::FindAvgTime( int processes[], int n, int bt[])
 FCFS::FCFS(int processes[], int no_processes, int burst_time[]) 
 { 
 	cout << "__________________________________________________" << endl << endl;
-	cout << "\t\t Shortest Job Next" << endl;
+	cout << "\t\t First Come First Serve" << endl;
 	cout << "__________________________________________________" << endl;
 	FCFS::FindAvgTime(processes, no_processes, burst_time); 
 }

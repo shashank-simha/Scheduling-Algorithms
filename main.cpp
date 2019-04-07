@@ -2,19 +2,21 @@
 #include "RoundRobin.hpp"
 #include "FCFS.hpp"
 #include "SJN.hpp"
+#include "PriorityScheduling.hpp"
 
 using namespace std;
 
 int main()
 {
-    int no_processes;
-    int *processes, *burst_time;
+    int no_processes, quantum;
+    int *processes, *burst_time, *priority;
 
     cout << "Enter the number of processes: ";
     cin >> no_processes;
 
 	processes = (int*) new int[no_processes];
-    burst_time = (int*) (int*) new int[no_processes];
+    burst_time = (int*) new int[no_processes];
+    priority = (int*) new int[no_processes];
 
 	if(!(processes || burst_time))
 	{
@@ -33,9 +35,21 @@ int main()
         cin >> burst_time[i-1];
     }
 
-    RoundRobinInit(processes, no_processes, burst_time);
-    FCFS temp(processes, no_processes, burst_time);
+    // Priorities
+    for(int i = 1; i <= no_processes; i++)
+    {
+        cout << "Enter the priority for process"<<i<<": ";
+        cin >> priority[i-1];
+    }
+
+    // Time quantum
+    cout << "Enter the time quantum: ";
+    cin >> quantum;
+
+    RoundRobinInit(processes, no_processes, burst_time, quantum);
+    FCFS scheduler1(processes, no_processes, burst_time);
     SJNInit(processes, no_processes, burst_time);
+    PS schduler2(processes, no_processes, burst_time, priority);
 
     return 0;
 }

@@ -98,15 +98,11 @@ void RRFindAvgTime(int processes[], int n, int bt[], int quantum)
 	cout << "Average turn around time = " << (float)total_tat / (float)n << endl; 
 } 
 
-void RoundRobinInit(int processes[], int no_processes, int burst_time[]) 
+void RoundRobinInit(int processes[], int no_processes, int burst_time[], int quantum) 
 { 
-	// Time quantum 
-	int quantum;
 	cout << "__________________________________________________" << endl << endl;
 	cout << "\t\t Round Robin" << endl;
 	cout << "__________________________________________________" << endl;
-    cout << "Enter the time quantum: ";
-    cin >> quantum;
 
 	RRFindAvgTime(processes, no_processes, burst_time, quantum); 
 } 
