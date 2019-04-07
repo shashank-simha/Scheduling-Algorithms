@@ -21,7 +21,7 @@ void PS::FindTurnAroundTime( int processes[], int n, int bt[], int wt[], int tat
 		tat[i] = bt[i] + wt[i]; 
 } 
 
-void PS::FindAvgTime( int processes[], int n, int bt[]) 
+void PS::FindAvgTime( int processes[], int n, int bt[], int priority[]) 
 { 
 	int wt[n], tat[n], total_wt = 0, total_tat = 0; 
 
@@ -32,7 +32,7 @@ void PS::FindAvgTime( int processes[], int n, int bt[])
 	FindTurnAroundTime(processes, n, bt, wt, tat); 
 
 	//Display processes along with all details 
-	cout << "Processes " << " Burst time " << " Waiting time " << " Turn around time" << endl; 
+	cout << "Processes " << " Burst time " << "Priority " << " Waiting time " << " Turn around time" << endl; 
 
 	// Calculate total waiting time and total turn 
 	// around time 
@@ -40,7 +40,7 @@ void PS::FindAvgTime( int processes[], int n, int bt[])
 	{ 
 		total_wt = total_wt + wt[i]; 
 		total_tat = total_tat + tat[i]; 
-		cout << " " << processes[i] << "\t\t" << bt[i] <<"\t " << wt[i] <<"\t\t " << tat[i] <<endl; 
+		cout << " " << processes[i] << "\t\t" << bt[i] << "\t" << priority[i] << "\t " << wt[i] <<"\t\t " << tat[i] <<endl; 
 	} 
 
 	cout << "Average waiting time = " << (float)total_wt / (float)n << endl; 
@@ -86,7 +86,7 @@ PS::PS(int processes[], int no_processes, int burst_time[], int priority[])
 	cout << "__________________________________________________" << endl;
 
     PS::PrioriySort(processes, no_processes, burst_time, priority);
-	PS::FindAvgTime(processes, no_processes, burst_time); 
+	PS::FindAvgTime(processes, no_processes, burst_time, priority); 
 }
 
 PS::~PS()
