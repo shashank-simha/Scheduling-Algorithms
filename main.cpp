@@ -43,24 +43,19 @@ int main()
 
     ProcessList.toArray(processes, burst_time, priority);
 
-    // RoundRobinInit(processes, no_processes, burst_time, quantum);
-    // FCFS scheduler1(processes, no_processes, burst_time);
-    // SJNInit(processes, no_processes, burst_time);
-    // PS schduler2(processes, no_processes, burst_time, priority);
-
     float avgWt, avgTat;
     
     RoundRobinInit(processes, no_processes, burst_time, quantum, &avgWt, &avgTat);
     ProcessList.setAverage(avgWt, avgTat, "RR");
 
     FCFS scheduler1(processes, no_processes, burst_time, &avgWt, &avgTat);
-    // ProcessList.setAverage(avgWt, avgTat, "FCFN");
+    ProcessList.setAverage(avgWt, avgTat, "FCFN");
 
     PS schduler2(processes, no_processes, burst_time, priority, &avgWt, &avgTat);
-    // ProcessList.setAverage(avgWt, avgTat, "Priority");
+    ProcessList.setAverage(avgWt, avgTat, "Priority");
 
     SJNInit(processes, no_processes, burst_time, &avgWt, &avgTat);
-    // ProcessList.setAverage(avgWt, avgTat, "SJN");
+    ProcessList.setAverage(avgWt, avgTat, "SJN");
 
     ProcessList.getAverage();
 

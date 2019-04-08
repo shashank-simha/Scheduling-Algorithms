@@ -23,7 +23,7 @@ private:
     
     struct P *head, *current, *newprocess;
     
-    struct avg *average;
+    struct avg average;
 
 public:
     Process();

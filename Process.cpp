@@ -72,28 +72,28 @@ void Process::setAverage(float wt, float tat, string algo)
 {
     if(algo == "RR")
     {
-        average -> avgWtRR = wt;
-        average -> avgTatRR = tat;
+        average.avgWtRR = wt;
+        average.avgTatRR = tat;
     }
 
     else if (algo == "FCFN") 
     {
-        average -> avgWtFCFN = wt;
-        average -> avgTatFCFN = tat;
+        average.avgWtFCFN = wt;
+        average.avgTatFCFN = tat;
     }
     
 
     else if (algo == "Priority") 
     {
-        average -> avgWtPri = wt;
-        average -> avgTatPri = tat;
+        average.avgWtPri = wt;
+        average.avgTatPri = tat;
     }
 
 
     else if (algo == "SJN") 
     {
-        average -> avgWtSJN = wt;
-        average -> avgTatSJN = tat;
+        average.avgWtSJN = wt;
+        average.avgTatSJN = tat;
     }
 
     else
@@ -105,10 +105,37 @@ void Process::setAverage(float wt, float tat, string algo)
 
 void Process::getAverage()
 {
+    cout << endl << endl;
+    cout << "________________________________________________________" << endl << endl;
     cout << "Algorithm" << "\t\t" << "Avg WT" << "\t\t" << "Avg TAT" << endl;
+    cout << "________________________________________________________" << endl << endl;
 
-    cout << "RR" << "\t\t\t" << average -> avgWtRR << "\t\t" << average -> avgTatRR << endl;
-    cout << "FCFN" << "\t\t\t" << average -> avgWtFCFN << "\t\t" << average -> avgTatFCFN << endl;
-    cout << "Priority" << "\t\t\t" << average -> avgWtPri << "\t\t" << average -> avgTatPri << endl;
-    cout << "SJN" << "\t\t\t" << average -> avgWtSJN << "\t\t" << average -> avgTatSJN << endl;
+    cout << "RR" << "\t\t\t" << average.avgWtRR << "\t\t" << average.avgTatRR << endl;
+    cout << "FCFN" << "\t\t\t" << average.avgWtFCFN << "\t\t" << average.avgTatFCFN << endl;
+    cout << "Priority" << "\t\t" << average.avgWtPri << "\t\t" << average.avgTatPri << endl;
+    cout << "SJN" << "\t\t\t" << average.avgWtSJN << "\t\t" << average.avgTatSJN << endl;
+    
+    cout << endl << endl << "Optimal algorithm(s)" << endl << endl;
+    
+    cout << "Based on Waiting time: \t\t";
+    if(average.avgWtRR <= average.avgWtFCFN && average.avgWtRR <= average.avgWtPri && average.avgWtRR <= average.avgWtSJN)
+        cout << "RR \t";
+    if(average.avgWtFCFN <= average.avgWtRR && average.avgWtFCFN <= average.avgWtPri && average.avgWtFCFN <= average.avgWtSJN)
+        cout << "FCFN \t";
+    if(average.avgWtPri <= average.avgWtRR && average.avgWtPri <= average.avgWtFCFN && average.avgWtPri <= average.avgWtSJN)
+        cout << "Priority \t";
+    if(average.avgWtSJN <= average.avgWtRR && average.avgWtSJN <= average.avgWtFCFN && average.avgWtSJN <= average.avgWtPri)
+        cout << "SJN \t";
+    cout << endl;
+
+    cout << "Based on Turn Around time: \t";
+    if(average.avgTatRR <= average.avgTatFCFN && average.avgTatRR <= average.avgTatPri && average.avgTatRR <= average.avgTatSJN)
+        cout << "RR \t";
+    if(average.avgTatFCFN <= average.avgTatRR && average.avgTatFCFN <= average.avgTatPri && average.avgTatFCFN <= average.avgTatSJN)
+        cout << "FCFN \t";
+    if(average.avgTatPri <= average.avgTatRR && average.avgTatPri <= average.avgTatFCFN && average.avgTatPri <= average.avgTatSJN)
+        cout << "Priority \t";
+    if(average.avgTatSJN <= average.avgTatRR && average.avgTatSJN <= average.avgTatFCFN && average.avgTatSJN <= average.avgTatPri)
+        cout << "SJN \t";
+    cout << endl;
 }
